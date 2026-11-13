@@ -374,6 +374,21 @@ footer{padding:30px 0 38px;border-top:1px solid var(--line);color:var(--muted);f
 }
 @media(max-width:380px){.sub-grid{grid-template-columns:1fr}.dash-stats{grid-template-columns:1fr}}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important} .reveal{opacity:1;transform:none} .hero::before,.hero::after{display:none}}
+
+/* — Stats + marquee polish (2026-11-13) — */
+.stats .stat{background:linear-gradient(180deg,#191919,#0F0F0F);position:relative;overflow:hidden}
+.stats .stat::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--lime),rgba(232,38,45,0) 65%)}
+.stats .stat:hover{box-shadow:0 18px 34px rgba(0,0,0,.5)}
+.stats .stat strong{font-size:36px;white-space:nowrap;display:flex;align-items:baseline;gap:7px}
+.stats .stat strong .counter{font-size:inherit}
+.stats .stat strong i{font-style:normal;color:var(--lime-bright)}
+.stats .stat strong .plus{font-size:.62em;font-weight:800}
+.stats .stat strong .arr{font-size:.5em;font-weight:700;transform:translateY(-2px)}
+.stats .stat strong .now{font-size:.4em;font-weight:800;color:var(--lime-bright);text-transform:uppercase;letter-spacing:.12em;display:inline;margin:0}
+.marquee{transform:none;padding:17px 0}
+.marquee-track{animation-duration:40s;font-size:13px;font-weight:600;letter-spacing:.16em;gap:46px}
+.marquee-track .mq-star{color:var(--lime);font-style:normal;margin-left:16px}
+@media(max-width:640px){.stats .stat strong{font-size:28px}.marquee-track{gap:30px}}
 </style>
 </head>
 <body>
@@ -416,8 +431,8 @@ footer{padding:30px 0 38px;border-top:1px solid var(--line);color:var(--muted);f
         </div>
         <div class="stats">
           <div class="stat" data-tilt><strong><span class="counter" data-target="2">2</span></strong><span>Live Products</span></div>
-          <div class="stat" data-tilt><strong><span class="counter" data-target="7">7</span>+</strong><span>Core Skills</span></div>
-          <div class="stat" data-tilt><strong>2023—</strong><span>BCSIT • Pokhara</span></div>
+          <div class="stat" data-tilt><strong><span class="counter" data-target="7">7</span><i class="plus">+</i></strong><span>Core Skills</span></div>
+          <div class="stat" data-tilt><strong>2023<i class="arr">→</i><span class="now">Now</span></strong><span>BCSIT • Pokhara</span></div>
         </div>
       </div>
     </div>
@@ -769,8 +784,8 @@ footer{padding:30px 0 38px;border-top:1px solid var(--line);color:var(--muted);f
 <script>
 // Marquee
 (function(){
-  var items=['DIGITAL MARKETING ✦','META ADS ✦','E-COMMERCE ✦','HTML • CSS • JAVASCRIPT ✦','SOCIAL MEDIA ✦','POKHARA • NEPAL ✦','DIGI NEPAL ✦','ONLINE PROMOTION ✦'];
-  var html=items.map(function(t){return '<span>'+t+'</span>'}).join('');
+  var items=['DIGITAL MARKETING','META ADS','E-COMMERCE','HTML • CSS • JAVASCRIPT','SOCIAL MEDIA','POKHARA • NEPAL','DIGI NEPAL','ONLINE PROMOTION'];
+  var html=items.map(function(t){return '<span>'+t+'<i class="mq-star">✦</i></span>'}).join('');
   document.getElementById('marqueeTrack').innerHTML=html+html;
 })();
 // Mobile menu
