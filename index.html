@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
 <style>
 :root{
   color-scheme:dark;
@@ -396,6 +397,9 @@ footer .wrap a[href="#top"]{white-space:nowrap;flex-shrink:0}
 .btn-buy{background:var(--lime);color:#fff;border:1px solid var(--lime)}
 .btn-buy:hover{background:var(--lime-bright)}
 .hero{background:radial-gradient(640px 320px at 85% 15%,rgba(232,38,45,.13),transparent 60%),radial-gradient(500px 260px at 8% 90%,rgba(232,38,45,.07),transparent 60%)}
+#three-canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.95;pointer-events:none;z-index:0}
+.sub-card{transition:transform .18s ease-out,box-shadow .25s ease}
+.sub-card:hover{transform:perspective(900px) rotateX(3deg) translateY(-6px);box-shadow:var(--shadow-3d)}
 </style>
 </head>
 <body>
@@ -416,6 +420,7 @@ footer .wrap a[href="#top"]{white-space:nowrap;flex-shrink:0}
 <main id="top">
   <!-- HERO -->
   <div class="hero">
+    <canvas id="three-canvas" aria-hidden="true"></canvas>
     <div class="wrap hero-grid">
       <div>
         <div class="hero-identity">
@@ -528,16 +533,16 @@ footer .wrap a[href="#top"]{white-space:nowrap;flex-shrink:0}
     <div class="wrap">
       <div class="section-head reveal"><div><span class="mono" style="color:var(--orange)">Inside the store</span><h2>What I sell at<br/><em>Digi Nepal.</em></h2></div><p>These are the subscriptions customers buy from me most. Tap one to see the price, then order on WhatsApp if you want it.</p></div>
       <div class="sub-grid reveal" id="subGrid">
-        <div class="sub-card selected" data-name="Netflix 4K" data-buy="https://diginepalnp.com/#product=8f3af020-a425-460e-b16c-a37d113be874" data-price="Rs 350 / month" data-note="4K profile on a shared premium account. Instant delivery on WhatsApp after payment.">
+        <div class="sub-card selected" data-tilt data-name="Netflix 4K" data-buy="https://diginepalnp.com/#product=8f3af020-a425-460e-b16c-a37d113be874" data-price="Rs 350 / month" data-note="4K profile on a shared premium account. Instant delivery on WhatsApp after payment.">
           <span class="sub-icon" style="background:#E50914">N</span><h3>Netflix</h3><p>Movies &amp; series in 4K, on your own profile.</p><div class="sub-price">Rs 350<small>per month</small></div>
         <a class="sub-buy" href="https://diginepalnp.com/#product=8f3af020-a425-460e-b16c-a37d113be874" target="_blank" rel="noopener">Buy on Digi Nepal ↗</a></div>
-        <div class="sub-card" data-name="Prime Video" data-buy="https://diginepalnp.com/#product=a180cbd9-c7df-4e85-9936-456156331cec" data-price="Rs 99 / month" data-note="Prime Video streaming plan. Instant delivery on WhatsApp after payment.">
+        <div class="sub-card" data-tilt data-name="Prime Video" data-buy="https://diginepalnp.com/#product=a180cbd9-c7df-4e85-9936-456156331cec" data-price="Rs 99 / month" data-note="Prime Video streaming plan. Instant delivery on WhatsApp after payment.">
           <span class="sub-icon" style="background:#00A8E1"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 5.5v13l11-6.5-11-6.5z" fill="#fff"/></svg></span><h3>Prime Video</h3><p>Blockbusters, series &amp; live sport streaming.</p><div class="sub-price">Rs 99<small>per month</small></div>
         <a class="sub-buy" href="https://diginepalnp.com/#product=a180cbd9-c7df-4e85-9936-456156331cec" target="_blank" rel="noopener">Buy on Digi Nepal ↗</a></div>
-        <div class="sub-card" data-name="CapCut Pro" data-buy="https://diginepalnp.com/#product=29c4ee47-0dd8-4c35-96ef-f35f9de94711" data-price="Rs 250 — 1 Device · Rs 375 — 2 Devices (PC)" data-note="CapCut Pro: Rs 250 for 1 device, Rs 375 for 2 devices (PC). 1-month plan, instant delivery.">
+        <div class="sub-card" data-tilt data-name="CapCut Pro" data-buy="https://diginepalnp.com/#product=29c4ee47-0dd8-4c35-96ef-f35f9de94711" data-price="Rs 250 — 1 Device · Rs 375 — 2 Devices (PC)" data-note="CapCut Pro: Rs 250 for 1 device, Rs 375 for 2 devices (PC). 1-month plan, instant delivery.">
           <span class="sub-icon" style="background:#0B0B0B"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="2.6" stroke="#fff" stroke-width="2"/><circle cx="6" cy="18" r="2.6" stroke="#fff" stroke-width="2"/><path d="M8.2 7.8 20 19M8.2 16.2 20 5" stroke="#25F4EE" stroke-width="2" stroke-linecap="round"/></svg></span><h3>CapCut Pro</h3><p>Pro editing — effects, no watermark, cloud.</p><div class="sub-price">Rs 250–375<small>per month · 1–2 devices</small></div>
         <a class="sub-buy" href="https://diginepalnp.com/#product=29c4ee47-0dd8-4c35-96ef-f35f9de94711" target="_blank" rel="noopener">Buy on Digi Nepal ↗</a></div>
-        <div class="sub-card" data-name="Gemini AI Pro" data-buy="https://diginepalnp.com/#product=c5d256ff-e004-435f-ada9-399383c2c057" data-price="Rs 350 — 3-month plan" data-note="Gemini AI Pro 3-month plan at Rs 350. Instant delivery on WhatsApp after payment.">
+        <div class="sub-card" data-tilt data-name="Gemini AI Pro" data-buy="https://diginepalnp.com/#product=c5d256ff-e004-435f-ada9-399383c2c057" data-price="Rs 350 — 3-month plan" data-note="Gemini AI Pro 3-month plan at Rs 350. Instant delivery on WhatsApp after payment.">
           <span class="sub-icon" style="background:#1B6EF3"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5c.7 5.8 3.7 8.8 9.5 9.5-5.8.7-8.8 3.7-9.5 9.5-.7-5.8-3.7-8.8-9.5-9.5C8.3 11.3 11.3 8.3 12 2.5z" fill="#fff"/></svg></span><h3>Gemini AI Pro</h3><p>Google's AI — writing, study &amp; work help.</p><div class="sub-price">Rs 350<small>3-month plan</small></div>
         <a class="sub-buy" href="https://diginepalnp.com/#product=c5d256ff-e004-435f-ada9-399383c2c057" target="_blank" rel="noopener">Buy on Digi Nepal ↗</a></div>
       </div>
@@ -879,7 +884,7 @@ document.querySelectorAll('#skills .card').forEach(function(el){io2.observe(el)}
 var fine=window.matchMedia('(pointer:fine)').matches;
 if(fine){
   document.querySelectorAll('[data-tilt]').forEach(function(el){
-    var max=parseFloat(el.dataset.tiltMax||'8');
+    var max=parseFloat(el.dataset.tiltMax||'11');
     el.addEventListener('mousemove',function(e){
       var r=el.getBoundingClientRect();var x=(e.clientX-r.left)/r.width-.5;var y=(e.clientY-r.top)/r.height-.5;
       el.style.transform='perspective(1100px) rotateY('+(x*max)+'deg) rotateX('+(-y*max)+'deg) translateY(-4px) translateZ(6px)';
@@ -888,6 +893,57 @@ if(fine){
     el.addEventListener('mouseleave',function(){el.style.transform='';el.style.boxShadow=''});
   });
 }
+// THREE.JS — 3D hero, light build (low DPR, few objects, pauses off-screen / hidden tab)
+(function(){
+  try{
+    var canvas=document.getElementById('three-canvas');if(!canvas||!window.THREE)return;
+    var scene=new THREE.Scene();
+    var camera=new THREE.PerspectiveCamera(55,1,.1,100);camera.position.z=9;
+    var renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:true,powerPreference:'low-power'});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.25));
+    var red=new THREE.MeshBasicMaterial({color:0xE8262D,wireframe:true,transparent:true,opacity:.55});
+    var white=new THREE.MeshBasicMaterial({color:0xFFFFFF,wireframe:true,transparent:true,opacity:.20});
+    var bright=new THREE.MeshBasicMaterial({color:0xFF3038,wireframe:true,transparent:true,opacity:.45});
+    var knot=new THREE.Mesh(new THREE.TorusKnotGeometry(1.55,.46,110,14),red);knot.position.set(3.5,.25,0);scene.add(knot);
+    var ring=new THREE.Mesh(new THREE.TorusGeometry(2.35,.06,10,70),bright);ring.position.copy(knot.position);ring.rotation.x=Math.PI/3;scene.add(ring);
+    var ring2=new THREE.Mesh(new THREE.TorusGeometry(2.7,.04,8,70),white);ring2.position.copy(knot.position);ring2.rotation.y=Math.PI/4;scene.add(ring2);
+    var ico=new THREE.Mesh(new THREE.IcosahedronGeometry(.95,0),bright);ico.position.set(-4.3,1.5,-1);scene.add(ico);
+    var dode=new THREE.Mesh(new THREE.DodecahedronGeometry(.62,0),red);dode.position.set(-3.1,-1.7,.2);scene.add(dode);
+    function makePoints(count,size,color,op,spread){var pos=new Float32Array(count*3);for(var i=0;i<count*3;i++){pos[i]=(Math.random()-.5)*spread}var g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(pos,3));var p=new THREE.Points(g,new THREE.PointsMaterial({color:color,size:size,transparent:true,opacity:op}));scene.add(p);return p;}
+    var pts=makePoints(170,.05,0xFF3038,.7,19);
+    var pts2=makePoints(70,.09,0xFFFFFF,.45,16);
+    var mx=0,my=0,tx=0,ty=0;
+    window.addEventListener('pointermove',function(e){tx=(e.clientX/window.innerWidth-.5);ty=(e.clientY/window.innerHeight-.5)},{passive:true});
+    function resize(){var w=canvas.clientWidth||canvas.parentElement.clientWidth,h=canvas.clientHeight||560;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+    resize();window.addEventListener('resize',resize);
+    var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var running=true,visible=true;
+    document.addEventListener('visibilitychange',function(){running=!document.hidden;});
+    if('IntersectionObserver' in window){new IntersectionObserver(function(es){visible=es[0].isIntersecting;},{threshold:0}).observe(canvas);}
+    var clock=0;
+    (function animate(){
+      requestAnimationFrame(animate);
+      if(!running||!visible)return;
+      clock+=.016;
+      mx+=(tx-mx)*.045; my+=(ty-my)*.045;
+      if(!reduced){
+        knot.rotation.x+=.0045;knot.rotation.y+=.0065;
+        ring.rotation.z+=.003; ring.rotation.x=Math.PI/3+Math.sin(clock*.4)*.18;
+        ring2.rotation.z-=.002; ring2.rotation.y=Math.PI/4+Math.cos(clock*.3)*.2;
+        ico.rotation.x+=.009;ico.rotation.y+=.011;
+        dode.rotation.x+=.007;dode.rotation.y+=.009;
+        ico.position.y=1.5+Math.sin(clock*.9)*.22;
+        dode.position.y=-1.7+Math.cos(clock*.8)*.18;
+        knot.position.y=.25+Math.sin(clock*.7)*.16 - my*.55;
+        pts.rotation.y+=.00075; pts2.rotation.y-=.0005;
+      }
+      knot.position.x=3.5+mx*.7; ring.position.copy(knot.position); ring2.position.copy(knot.position);
+      camera.position.x=mx*.7; camera.position.y=-my*.45; camera.lookAt(0,0,0);
+      renderer.render(scene,camera);
+    })();
+  }catch(e){}
+})();
+
 </script>
 </body>
 </html>
