@@ -75,9 +75,6 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--nav);back
 .lead{font-size:18px;line-height:1.75;color:var(--muted);max-width:640px;margin:0}
 .lead b{color:var(--ink)}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.meta-chip{border:1px dashed var(--line);background:color-mix(in srgb, var(--surface) 84%, transparent);padding:10px 13px;border-radius:12px;font-size:13px;line-height:1.4}
-.meta-chip b{color:var(--ink)}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px;perspective:1000px}
 .stat{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 16px;transform-style:preserve-3d;box-shadow:0 10px 24px rgba(0,0,0,.06);transition:transform .25s, box-shadow .25s}
 .stat:hover{box-shadow:var(--shadow-3d)}
@@ -104,9 +101,6 @@ section{padding:76px 0}
 .card p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.7}
 
 /* PROJECTS */
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-.filter-btn{padding:11px 18px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-weight:700;cursor:pointer;min-height:48px;font-size:14px}
-.filter-btn.active{background:var(--ink);color:var(--bg);border-color:var(--ink);box-shadow:4px 4px 0 var(--lime)}
 .project{overflow:hidden;padding:0;display:flex;flex-direction:column}
 .project img{height:220px;width:100%;object-fit:cover;transition:transform .5s}
 .project:hover img{transform:scale(1.03)}
@@ -236,8 +230,6 @@ footer{padding:30px 0 38px;border-top:1px solid var(--line);color:var(--muted);f
   .lead{font-size:16px;line-height:1.8;max-width:100%}
   .hero-actions{flex-direction:column;align-items:stretch;margin-top:24px;gap:10px}
   .hero-actions .btn{width:100%;justify-content:center;padding:14px 18px}
-  .hero-meta{flex-direction:column;gap:8px;margin-top:18px}
-  .meta-chip{width:100%;font-size:13px;padding:11px 13px}
   .stats{grid-template-columns:1fr;gap:10px;margin-top:22px}
   .stat{display:flex;align-items:center;justify-content:space-between;padding:16px 18px}
   .stat strong{font-size:26px}
@@ -258,8 +250,6 @@ footer{padding:30px 0 38px;border-top:1px solid var(--line);color:var(--muted);f
   .grid4{grid-template-columns:1fr}
   .project img{height:190px}
   .project-body{padding:20px 18px;gap:11px}
-  .filters{gap:7px}
-  .filter-btn{flex:1;text-align:center;padding:11px 10px;font-size:13px}
   .t-item{padding:0 0 24px 46px}
   .t-item h3{font-size:16px}
   .contact-box{padding:24px 20px;gap:22px;border-radius:22px}
@@ -369,16 +359,13 @@ p{line-height:1.8}
         <span class="pill"><span class="dot"></span> Founder • Digital Marketer • Web Developer</span>
         <h1>Hi, I'm<br/>Prabin <em>Kandel.</em></h1>
         <p class="lead">I'm a BCSIT student in Pokhara who builds websites and runs <b>Digi Nepal</b>, my online store for premium subscriptions like Netflix, Prime Video and CapCut Pro.</p>
-        <p class="lead" style="margin-top:12px;font-size:16px">I also built <b>Digi Manager</b>, the app I use myself to keep track of accounts, customers and renewal dates.</p>
+        
         <div class="hero-actions">
           <a href="#work" class="btn btn-dark">View Selected Work <span class="btn-arr">↓</span></a>
           <a href="https://wa.me/9779840661406?text=Hi%20Prabin%2C%20I%20saw%20your%20portfolio%20and%20want%20to%20work%20with%20you." target="_blank" rel="noopener" class="btn btn-wa">💬 WhatsApp Me</a>
           <button class="btn btn-ghost" id="downloadCvTop">⬇ Download CV</button>
         </div>
-        <div class="hero-meta">
-          <span class="meta-chip">📍 <b>Pokhara 31, Kaski</b> — Nepal</span>
-          <span class="meta-chip">✉️ <b>prabink721@gmail.com</b></span>
-        </div>
+        
         <div class="stats">
           <div class="stat" data-tilt><strong><span class="counter" data-target="2">2</span></strong><span>Live Products</span></div>
           <div class="stat" data-tilt><strong><span class="counter" data-target="7">7</span><i class="plus">+</i></strong><span>Core Skills</span></div>
@@ -407,10 +394,7 @@ p{line-height:1.8}
           </div>
         </div>
       </div>
-      <div class="grid2" style="margin-top:20px">
-          <div class="card reveal"><div class="icon-box" style="background:#FEE2E2">🛒</div><h3>Founder — Digi Nepal</h3><p>My store at <a href="https://diginepalnp.com" target="_blank" rel="noopener" style="font-weight:700;text-decoration:underline">diginepalnp.com</a>. I handle the products, prices, offers and customer orders on WhatsApp myself.</p></div>
-          <div class="card reveal"><div class="icon-box" style="background:var(--orange-soft)">📱</div><h3>Creator — Digi Manager</h3><p>The app I built for my own store first: accounts, customers, expiry reminders and profit, all in one place.</p></div>
-      </div>
+      
     </div>
   </section>
 
@@ -431,11 +415,7 @@ p{line-height:1.8}
   <section id="work" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
     <div class="wrap">
       <div class="section-head reveal"><div><span class="mono" style="color:var(--orange)">03 — Selected Work</span><h2>My two<br/><em>projects.</em></h2></div><p>Both are live and I work on them myself — Digi Nepal, my store, and Digi Manager, the app that helps me run it.</p></div>
-      <div class="filters reveal">
-        <button class="filter-btn active" data-filter="all">All Work</button>
-        <button class="filter-btn" data-filter="commerce">E-commerce</button>
-        <button class="filter-btn" data-filter="product">Product / App</button>
-      </div>
+      
       <div class="grid2" id="projectGrid">
         <article class="card project reveal" data-cat="commerce" data-tilt>
           <div class="store-stage">
@@ -463,8 +443,7 @@ p{line-height:1.8}
           </div>
         </article>
       </div>
-      <p class="reveal" style="margin-top:18px;color:var(--muted);font-size:13.5px;line-height:1.7">Also on TikTok personally as <b style="color:var(--ink)">@prabinkandel045</b> — day-to-day and behind-the-scenes from Nepal.</p>
-    </div>
+      </div>
   </section>
 
   <!-- SUBSCRIPTIONS — interactive icon picker -->
@@ -513,10 +492,7 @@ p{line-height:1.8}
             <span class="skill-pill">HTML</span><span class="skill-pill">CSS</span><span class="skill-pill">JavaScript</span>
             <span class="skill-pill">Social Media</span><span class="skill-pill">WhatsApp Business</span><span class="skill-pill">Online Promotion</span>
           </div>
-          <div style="margin-top:22px;background:var(--bg);border:1px dashed var(--line);border-radius:14px;padding:16px">
-            <p style="margin:0;font-size:14px;line-height:1.7;color:var(--muted)"><b style="color:var(--ink)">Training certified:</b> Digital Marketing, E-commerce, Social Media &amp; Online Promotion — Pokhara Metropolitan City, Business Promotion Center (May–Jun 2024).</p>
-            <a href="https://bpc.pokharamun.gov.np/" target="_blank" rel="noopener" style="font-weight:700;font-size:13px;display:inline-block;margin-top:8px">bpc.pokharamun.gov.np ↗</a>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -536,15 +512,7 @@ p{line-height:1.8}
           </div>
         </div>
         <div style="display:grid;gap:18px;align-content:start">
-          <div class="card reveal" data-tilt style="background:var(--ink);color:var(--bg);border-color:var(--ink)">
-            <span class="mono" style="color:#D21F26">Currently</span>
-            <h3 style="font-size:24px;line-height:1.25;margin-top:10px;color:var(--bg)">Studying BCSIT.<br/>Running Digi Nepal.</h3>
-            <p style="color:rgba(0,0,0,.68);line-height:1.7">Pokhara 31, Kaski — 33700 • Nepalese<br/>Open to freelance, collaborations &amp; full-time roles.</p>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:18px">
-              <a href="https://wa.me/9779840661406" target="_blank" rel="noopener" class="btn btn-lime">Chat on WhatsApp</a>
-              <a href="mailto:prabink721@gmail.com" class="btn" style="background:transparent;color:var(--bg);border-color:rgba(0,0,0,.35)">Email Me</a>
-            </div>
-          </div>
+          
           <div class="card reveal">
             <h3>Find me online</h3>
             <div style="display:grid;gap:9px;margin-top:14px;font-size:14px">
@@ -678,16 +646,6 @@ function downloadCV(){
 }
 document.getElementById('downloadCvBtn').addEventListener('click',downloadCV);
 document.getElementById('downloadCvTop').addEventListener('click',downloadCV);
-// Filters
-document.querySelectorAll('.filter-btn').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');
-    var f=btn.dataset.filter;
-    document.querySelectorAll('#projectGrid .project').forEach(function(card){
-      card.style.display=(f==='all'||card.dataset.cat===f)?'flex':'none';
-    });
-  });
-});
 // Contact form -> WhatsApp
 document.getElementById('contactForm').addEventListener('submit',function(e){
   e.preventDefault();
