@@ -1,6 +1,6 @@
 /* Prabin Kandel — portfolio (preview build)
    Vanilla JS only: products showcase, theme toggle, mobile menu,
-   contact form -> WhatsApp, copy email, reveal-on-scroll. */
+   scrollspy, contact form -> WhatsApp, copy email, reveal-on-scroll. */
 (function () {
   'use strict';
   document.documentElement.classList.add('js');
@@ -108,6 +108,25 @@
       window.open('https://wa.me/9779840661406?text=' + encodeURIComponent(text), '_blank');
       showToast('Opening WhatsApp…');
     });
+  }
+
+  /* ---------- scrollspy: mark the nav link of the section in view ---------- */
+  var spyLinks = navLinks ? navLinks.querySelectorAll('a[href^="#"]') : [];
+  if (spyLinks.length && 'IntersectionObserver' in window) {
+    var spyMap = {};
+    var spySections = [];
+    spyLinks.forEach(function (a) {
+      var sec = document.getElementById(a.getAttribute('href').slice(1));
+      if (sec) { spyMap[sec.id] = a; spySections.push(sec); }
+    });
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        spyLinks.forEach(function (a) { a.classList.remove('active'); });
+        if (spyMap[entry.target.id]) spyMap[entry.target.id].classList.add('active');
+      });
+    }, { rootMargin: '-38% 0px -55% 0px', threshold: 0 });
+    spySections.forEach(function (sec) { spy.observe(sec); });
   }
 
   /* ---------- reveal on scroll (lightweight, reduced-motion safe) ---------- */
